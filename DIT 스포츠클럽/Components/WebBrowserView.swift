@@ -51,13 +51,15 @@ struct WebBrowserView: UIViewRepresentable {
         
         
         //getCurrentPosition
-        
+        guard let url = URL(string: self.url) else { return wkWebView}
+        let request = URLRequest(url: url)
+        wkWebView.load(request)
         return wkWebView
     }
     func updateUIView(_ uiView: WKWebView, context: Context) {
-        guard let url = URL(string: self.url) else { return  }
-        let request = URLRequest(url: url)
-        uiView.load(request)
+//        guard let url = URL(string: self.url) else { return  }
+//        let request = URLRequest(url: url)
+//        uiView.load(request)
     }
     
     func makeCoordinator() -> Coordinator {
