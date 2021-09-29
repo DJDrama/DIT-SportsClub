@@ -1,5 +1,5 @@
 //
-//  DIT_____________App.swift
+//  DITSportsClubApp.swift
 //  DIT 스포츠클럽
 //
 //  Created by dj on 2021/09/29.
@@ -11,7 +11,7 @@ import SwiftUI
 struct DITSportsClubApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(url: MAIN_URL)
         }
     }
 }
