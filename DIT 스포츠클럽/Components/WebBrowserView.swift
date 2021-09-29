@@ -30,6 +30,7 @@ struct WebBrowserView: UIViewRepresentable {
         // Here "iOSNative" is our interface name that we pushed to the website that is being loaded
         configuration.userContentController.add(self.makeCoordinator(), name: "iOSNative")
         
+        // no zoom
         let source: String = "var meta = document.createElement('meta');" +
             "meta.name = 'viewport';" +
             "meta.content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no';" +
@@ -51,12 +52,15 @@ struct WebBrowserView: UIViewRepresentable {
         
         
         //getCurrentPosition
+        
+        // to prevent reload url when alert dialog event happens
         guard let url = URL(string: self.url) else { return wkWebView}
         let request = URLRequest(url: url)
         wkWebView.load(request)
         return wkWebView
     }
     func updateUIView(_ uiView: WKWebView, context: Context) {
+        // this may reload url when alert dialog event happens
 //        guard let url = URL(string: self.url) else { return  }
 //        let request = URLRequest(url: url)
 //        uiView.load(request)
